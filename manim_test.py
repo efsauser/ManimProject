@@ -80,20 +80,32 @@ class Throw(Scene):
         self.play(ShowCreation(func), t.set_value, 2*velo*np.sin(angle)/10, run_time=5)
         self.wait()
 
-class Pendulum(Scene):
+class Snow(Scene):
     def construct(self):
-        mg = 1
-        line = Line(np.array([0,2,0]),np.array([0,-1,0]))
-        circle = Circle(radius=0.1, stroke_width=3)
-        circle.next_to(line, DOWN, buff=0)
-        # pendulum= VGroup(line, circle)
-        # pendulum.rotate(45*DEGREES, axis=IN, about_point=np.array([0,2,0]))
-        def rr(x,y,z,t):
-            x=x+np.cos(100*t)
-            y=y+np.sin(100*t)-mg
-            z=0
-            return [x,y,z] 
-        self.play(Homotopy(rr,circle),run_time=10,rate_func=linear)
-        # self.play(ShowCreation(pendulum))
-        # self.play(Rotating(pendulum , radians=90*DEGREES,run_time=10,axis=OUT,about_point=2*UP),rate_func=there_and_back,run_time=1)
+        def next(obj):
+            old = t.get_value()
+            if t.get_value()%2==0:
+                t.set_value(old/2)
+                obj.shift(0.1*RIGHT, (old/2-old)*0.0007*UP)
+            else:
+                t.set_value(t.get_value()*3+1)
+                obj.shift(0.1*RIGHT, (old*3+1-old)*0.0007*UP)
+
+        axes = Axes(
+            x_min=0, x_max=10,
+            y_min=0, y_max=33,
+            center_point=5*LEFT+3*DOWN,
+            y_axis_config={
+                "label_direction":UP,
+                "numbers_with_elongated_ticks":[10,20,30],
+            "tick_frequency":1,
+            "stroke_width":4,
+            "unit_size":0.2,
+            },
+        )
+        t = ValueTracker(27)
+        dot = Dot(radius=0).move_to(6*LEFT+3*DOWN)
+        path = TracedPath(dot.get_center, stroke_color=ORANGE)
+        self.play(ShowCreation(axes.x_axis), ShowCreation(axes.y_axis))
+        self.play(UpdateFromFunc(dot, next), ShowCreation(path), run_time=3)
         self.wait()
