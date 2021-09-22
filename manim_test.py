@@ -104,7 +104,7 @@ class Snow(Scene):
             },
         )
         t = ValueTracker(27)
-        dot = Dot(radius=0).move_to(6*LEFT+3*DOWN)
+        dot = Dot(radius=0).move_to(LEFT_SIDE+3*DOWN)
         path = TracedPath(dot.get_center, stroke_color=ORANGE)
         self.play(ShowCreation(axes.x_axis), ShowCreation(axes.y_axis))
         self.play(UpdateFromFunc(dot, next), ShowCreation(path), run_time=3)
