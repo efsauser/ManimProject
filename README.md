@@ -9,3 +9,6 @@
 
 最新的輸出指令範例：
 manim -pqm Helmholtz.py Device
+
+2024/4/25 新計畫
+使用matlab進行數值計算，使用manim繪製動畫
