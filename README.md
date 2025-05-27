@@ -1,3 +1,21 @@
+## 2025/5/27 新動畫目標
+
+均勻電磁場下的帶電粒子軌跡
+
+https://www.desmos.com/calculator/yf3xjmlmvq
+
+$x(t)=-\frac{E_y}{B}t
+      +\frac{1}{\omega}\left(v_{0y}-\frac{E_x}{B}\right)\cos(\omega t)
+      +\frac{1}{\omega}\left(v_{0x}+\frac{E_y}{B}\right)\sin(\omega t)
+      -\frac{1}{\omega}\left(v_{0y}-\frac{E_x}{B}\right)$
+
+$y(t)= \frac{E_x}{B}t
+      -\frac{1}{\omega}\left(v_{0x}+\frac{E_y}{B}\right)\cos(\omega t)
+      +\frac{1}{\omega}\left(v_{0y}-\frac{E_x}{B}\right)\sin(\omega t)
+      +\frac{1}{\omega}\left(v_{0x}+\frac{E_y}{B}\right)$
+
+$\omega=\frac{qB}{m}$
+
 ## 2024/4/26 新研究目標
 
 微分方程式 $y''=2yy', y(0)=1, y'(0)=-1$ 
